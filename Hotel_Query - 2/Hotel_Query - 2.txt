@@ -18,12 +18,9 @@ SELECT		COUNT(`prenotazioni_has_ospiti`.`ospite_id`) AS 'totale_prenotazioni',
 		`prenotazioni_has_ospiti`.`ospite_id`, 
 		`ospiti`.`name`, 
 		`ospiti`.`lastname`
-
 FROM 		`prenotazioni_has_ospiti`
-
 INNER JOIN 	`ospiti`
 ON 		`prenotazioni_has_ospiti`.`ospite_id` = `ospiti`.`id`
-
 GROUP BY 	`prenotazioni_has_ospiti`.`ospite_id`
 
 -----------------------------------------------------------------------
@@ -33,16 +30,12 @@ GROUP BY 	`prenotazioni_has_ospiti`.`ospite_id`
 SELECT  	`paganti`.`name`, 
 		`paganti`.`lastname`,
         	`pagamenti`.`price`,
-        	`prenotazioni`.`created_at`
-        
+        	`prenotazioni`.`created_at`       
 FROM 		`pagamenti` 
-
 INNER JOIN 	`paganti`
 ON		`pagamenti`.`pagante_id` = `paganti`.`id` 
-
 INNER JOIN	`prenotazioni`
 ON		`pagamenti`.`prenotazione_id` = `prenotazioni`.`id`
-
 WHERE 		`prenotazioni`.`created_at` LIKE '%2018-05%'
 
 -----------------------------------------------------------------------
@@ -51,15 +44,11 @@ WHERE 		`prenotazioni`.`created_at` LIKE '%2018-05%'
 
 SELECT 		SUM(`price`) AS 'total_price',
 		`stanze`.`floor`
-
 FROM 		`pagamenti`
-
 INNER JOIN 	`prenotazioni`
 ON		`pagamenti`.`prenotazione_id` = `prenotazioni`.`id`
-
 INNER JOIN 	`stanze`
 ON		`prenotazioni`.`stanza_id` = `stanze`.`id`
-
 WHERE 		`stanze`.`floor` = '1'
 
 -----------------------------------------------------------------------
