@@ -66,7 +66,11 @@ WHERE 		`stanze`.`floor` = '1'
 • Le stanze sono state tutte prenotate almeno una volta? (Visualizzare le stanze non ancora prenotate)
 -----------------------------------------------------------------------
 
-
+SELECT	 	`stanze`.`room_number`
+FROM 		`stanze` 
+LEFT JOIN 	`prenotazioni`
+ON 		`stanze`.`id` = `prenotazioni`.`stanza_id`
+WHERE 		`prenotazioni`.`id`IS NULL
 
 -----------------------------------------------------------------------
 
